@@ -13,10 +13,6 @@ const Login=()=>{
                 <input type="checkbox"/>
             </div>
             <input type="submit" class="login" id="btnLogin" value="Login"/>
-            <div class="register">
-                <span class="link2register_text">You don't have account?</span>
-                <a href="#" class="link2register">Regist here!</a>
-            </div>
         </form>
     )
 }

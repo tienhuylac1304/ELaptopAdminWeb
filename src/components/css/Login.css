@@ -74,16 +74,3 @@ h1{
     text-align: right;
     margin-right: 15%;
 }
-.link2register_text{
-    font-size: 15px;
-}
-.link2register{
-    text-decoration: none;
-    font-size: 17px;
-    color:lightskyblue;
-}
-.link2register:hover{
-    color:blueviolet;
-    font-size: 20px;
-    transition:linear;
-}
