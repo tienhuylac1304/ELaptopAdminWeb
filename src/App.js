@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 // import Dashboard from './component/Dashboard';
 
 import Dashboard from './views/Dashboard'
+import Login from "./views/Login";
 
 function App() {
       //Test
@@ -38,7 +39,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Dashboard staffs={staffs} account={admin}/>} />
+        <Route path="/" element={<Login/>} />
       </Routes>
     </div>
 
