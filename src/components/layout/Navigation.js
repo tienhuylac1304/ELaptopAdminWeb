@@ -9,10 +9,10 @@ const Navigation = ({account}) => {
                     <li className="list">
                         <a href="#">
                             <span className="icon">
-                                <img src={account.proImg}></img>
+                                {/* <img src={account.proImg}></img> */}
                             </span>
                             <span className="title">
-                                {account.name}
+                                {/* {localStorage['CurrentUser'].fullName} */}
                             </span>
                         </a>
                     </li>

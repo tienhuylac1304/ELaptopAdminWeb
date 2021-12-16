@@ -44,7 +44,7 @@ const Dashboard = ({staffs, account}) => {
                             <td>Phone</td>
                             <td></td>
                         </tr>
-                        {staffs.map(staff=>(
+                        {/* {staffs.map(staff=>(
                             <tr key={staff.id} className="tb_body">
                             <td>{staff.id}</td>
                             <td>{staff.name}</td>
@@ -56,7 +56,7 @@ const Dashboard = ({staffs, account}) => {
                                 <Button type="delete" href="#"></Button>
                             </td>
                         </tr>
-                        ))}
+                        ))} */}
                         
                     </table>
                 </div>

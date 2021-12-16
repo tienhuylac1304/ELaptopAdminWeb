@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Dashboard from './views/Dashboard'
 import Login from "./views/Login";
+import AuthProvider from "./contexts/AuthContext"
 
 function App() {
       //Test
@@ -38,9 +39,12 @@ function App() {
       }]
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Login/>} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Login/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+        </Routes>
+      </AuthProvider>
     </div>
 
   );
