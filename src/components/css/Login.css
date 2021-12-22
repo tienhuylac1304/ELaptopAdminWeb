@@ -10,8 +10,10 @@
     color: #fff;
     border-radius: 20px;
 }
-body{
-    background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/nissan-z-proto-u-s-16-source-1609346158.jpg");
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://wallpaperaccess.com/full/279618.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
 }

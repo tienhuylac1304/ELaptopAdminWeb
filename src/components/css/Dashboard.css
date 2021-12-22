@@ -19,9 +19,12 @@
 .Dashboard .cards .card i{
     font-size: 50px;
 }
+.Dashboard .cards .card .title{
+    text-align: center;
+}
 .staff_tb{
     margin-top: 15px;
-    height: 65vh;
+    min-height: 65vh;
     width: 90%;
     text-align: center;
     background-color: rgba(181, 245, 165, 0.986);
@@ -31,6 +34,10 @@
     padding: 15px;
     font-size: 18px;
     margin-inline: 5%;
+}
+.staff_tb .ctn_btnCre{
+    text-align: right;
+    margin-bottom: 10px;
 }
 .staff_tb .tb_title{
     text-align: left;
@@ -52,4 +59,10 @@
 }
 .staff_tb .tb .tb_body:hover{
     background-color: rgba(143, 197, 130, 0.986);
+}
+.staff_tb .tb .tb_body td img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    vertical-align: middle;
 }

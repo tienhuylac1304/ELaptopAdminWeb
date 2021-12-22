@@ -26,6 +26,15 @@
 .btn_details{
     background-color: rgba(57, 176, 245, 0.822);
 }
+.btn_create{
+    background-color: rgba(227, 250, 95, 0.774);
+}
+.btn_copy{
+    background-color: azure;
+}
+.btn_accept{
+    background-color: rgba(57, 176, 245, 0.822);
+}
 i{
     font-size: 20px;
     vertical-align: middle;

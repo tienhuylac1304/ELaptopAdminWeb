@@ -22,3 +22,27 @@
     height:50px;
     object-fit:cover
 }
+.header_content .search{
+    text-align: right;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+}
+.header_content .search .txt_search{
+    vertical-align: middle;
+    height: 30px;
+    margin-bottom: 30px;
+    width: 30%;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.header_content .search .btn_search{
+    vertical-align: middle;
+    height: 30px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    background-color: rgba(0, 158, 250, 0.822);
+    padding-inline: 5px;
+    color: #fff;
+    border-radius: 5px;
+}

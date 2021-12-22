@@ -35,34 +35,36 @@ const Login=()=>{
         }
     }
     return(
-        <form onSubmit={loginEvent} class="box" >
-            <h1>Login</h1>
-            <div class="title">phone</div>
-            <input 
-                type="text" 
-                class="textbox" 
-                id="phone" 
-                name="phone"
-                placeholder="Input your phone.."
-                value={phone}
-                onChange={onChangeLoginForm}
+        <div className="container">
+            <form onSubmit={loginEvent} class="box" >
+                <h1>Login</h1>
+                <div class="title">phone</div>
+                <input 
+                    type="text" 
+                    class="textbox" 
+                    id="phone" 
+                    name="phone"
+                    placeholder="Input your phone.."
+                    value={phone}
+                    onChange={onChangeLoginForm}
+                    />
+                <div class="title">Password</div>
+                <input 
+                    type="password" 
+                    class="textbox"
+                    id="password" 
+                    name="password"
+                    placeholder="Input your Password.."
+                    value={password}
+                    onChange={onChangeLoginForm}
                 />
-            <div class="title">Password</div>
-            <input 
-                type="password" 
-                class="textbox"
-                id="password" 
-                name="password"
-                placeholder="Input your Password.."
-                value={password}
-                onChange={onChangeLoginForm}
-             />
-            <div class="rememberPass">
-                <span class="text">Remember me</span>
-                <input type="checkbox"/>
-            </div>
-            <input type="submit" class="login" id="btnLogin" value="Login"/>
-        </form>
+                <div class="rememberPass">
+                    <span class="text">Remember me</span>
+                    <input type="checkbox"/>
+                </div>
+                <input type="submit" class="login" id="btnLogin" value="Login"/>
+            </form>
+        </div>
     )
 }
 export default Login
