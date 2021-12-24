@@ -9,6 +9,8 @@ import Customer from "./views/Customer";
 import Vouchers from "./views/Voucher";
 import Chat from "./views/Chat";
 import UnChat from "./views/UnChat ";
+import ChatDetails from "./views/ChatDetails";
+
 
 function App() {
       //Test
@@ -31,6 +33,7 @@ function App() {
           <Route path="/customer" element={<Customer account={admin}/>} />
           <Route path="/vouchers" element={<Vouchers account={admin}/>} />
           <Route path="/Chats" element={<Chat account={admin}/>}/>
+          <Route path="/ChatDetails" element={<ChatDetails account={admin}/>}/>
           <Route path="/UnChat" element={<UnChat account={admin}/>}/>
           <Route path="/" element={<Landing/>} />
         </Routes>

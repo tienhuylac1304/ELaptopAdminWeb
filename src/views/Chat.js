@@ -1,42 +1,81 @@
+/* eslint-disable jsx-a11y/alt-text */
 import "./../components/css/Chats.css";
 import Header from "../components/layout/Header";
 import Navigation from "../components/layout/Navigation";
 import Button from "../components/layout/Button";
 import Footer from "../components/layout/Footer";
 import { Link } from "react-router-dom";
+// import { io } from "socket.io-client";
+import React, { useState, useEffect, useRef } from "react";
+import { apiUrl } from '../api'
+import io from "socket.io-client"
+import axios from "axios";
 
-const Chat = ({ account}) => {
-    const chats=[{
-        chatId:"1",
-        cusImg:"https://pdp.edu.vn/wp-content/uploads/2021/05/hinh-anh-avatar-de-thuong.jpg",
-        cusName:"Thông",
-        lastMess:{
-            sendUser:"Thông",
-            content:"Hello",
-            sendTime:"4h ago"
+const socket = io.connect(apiUrl);
+const Chat = ({ navigation, account }) => {
+    let CurrentUser = localStorage['CurrentUser']
+    const [roomData, setRoomData] = useState([])
+
+    //useEffect
+    useEffect(() => {
+        // console.log(localStorage['CurrentUser']);
+        axios.get(`${apiUrl}/rooms/staff/${localStorage['CurrentUser']}`)
+            .then((rooms) => {
+                // console.log(rooms["data"].room.user1.profilePicture);
+                if (rooms["data"].hasValue) {
+                    setRoomData([...roomData, ...rooms["data"].room])
+                }
+            })
+    }, [])
+    // useEffect(() => {
+    //     axios.get(`${apiUrl}/rooms/`)
+    // })
+    const RoomItem = ({room}) => {
+        const [lastMessages, setLastMessages]=useState({
+            userId: "",
+            message: "",
+            time: "",
+            roomId: ""
+        });
+        useEffect(() => {
+            getAllMessageFromRoom()
+        }, [])
+        const getAllMessageFromRoom = () => {
+            //get all message from room id
+            axios.get(`${apiUrl}/rooms/messages/${room._id}`)
+                .then((msg) => {
+                    // get last message in room 
+                    let length= msg["data"].length;
+                    console.log(msg["data"][length-1]);
+                    setLastMessages(msg["data"][length-1])
+                })
         }
-    },
-    {
-        chatId:"2",
-        cusImg:"https://haycafe.vn/wp-content/uploads/2021/11/Anh-avatar-dep-chat-lam-hinh-dai-dien.jpg",
-        cusName:"Thanh",
-        lastMess:{
-            sendUser:"You",
-            content:"Thanks!!",
-            sendTime:"5h ago"
-        }
-    },
-    {
-        chatId:"3",
-        cusImg:"https://thuthuatnhanh.com/wp-content/uploads/2021/02/Anh-avatar-bua-cute-dep-390x390.jpg",
-        cusName:"Huy",
-        lastMess:{
-            sendUser:"Huy",
-            content:"Hi",
-            sendTime:"3h ago"
-        }
+        return (
+            <div className="tb_row" key={room._id}>
+                <Link className="mess" to={"/ChatDetails"}
+                    state={room}
+                >
+
+                    <tr className="tb_body">
+                        <td rowSpan="3">
+                            <img src={`${apiUrl}/images/${room.user1.profilePicture}`} />
+                        </td>
+                        <td className="col_2">
+                            {room.user1.fullName}
+                        </td>
+                        <td rowSpan="2" className="col_3">
+                            {lastMessages.time}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="chat_content col_2">
+                            {lastMessages.userId==localStorage["CurrentUser"] && (<span>You: </span>)}{lastMessages.message}
+                        </td>
+                    </tr>
+                </Link>
+            </div>
+        )
     }
-]
     return (
         <>
             <Header />
@@ -55,35 +94,16 @@ const Chat = ({ account}) => {
                             </Link>
                         </div>
                         <table className="tb">
-                            {chats.map(chat=>(
-                                <div className="tb_row" key={chat.chatID}>
-                                    <Link className="mess" to="#">
-
-                                    <tr className="tb_body">
-                                        <td rowSpan="2">
-                                            <img src={chat.cusImg}/>
-                                        </td>
-                                        <td className="col_2">
-                                            {chat.cusName}
-                                        </td>
-                                        <td rowSpan="2" className="col_3">
-                                            {chat.lastMess.sendTime}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="chat_content col_2">
-                                            {chat.lastMess.sendUser}: {chat.lastMess.content}
-                                        </td>
-                                    </tr>
-                                    </Link>
-                                </div>   
-                            ))}
-                            
+                            {
+                                roomData.map(room => (
+                                    <RoomItem room={room} />
+                                ))
+                            }
                         </table>
-                </div>
+                    </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }
