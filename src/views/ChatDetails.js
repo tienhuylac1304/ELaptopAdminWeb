@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 import '../components/css/ChatDetails.css';
-import io from "socket.io-client"
 import Navigation from "../components/layout/Navigation";
 import Header from "../components/layout/Header";
 import { Link, useLocation } from "react-router-dom";
 import { apiUrl } from '../api';
 import axios from "axios";
-import {FaArrowLeft} from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
+import io from "socket.io-client"
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("http://192.168.1.2:3001");
 const ChatDetails = ({ account }) => {
     const location = useLocation()
     const data = location.state
@@ -40,6 +40,11 @@ const ChatDetails = ({ account }) => {
         socket.emit("join-room", data._id)
     }, [])
     useEffect(() => {
+        socket.on("onMessage", (data) => {
+            setMessageData((msgs) => [...msgs, data])
+        })
+    }, [])
+    useEffect(() => {
         getAllMessageFromRoom()
     }, [])
     const getAllMessageFromRoom = () => {
@@ -54,18 +59,37 @@ const ChatDetails = ({ account }) => {
         event.target.value
     )
     const handleSendMessage = () => {
-        console.log(message);
-        setMessageData([...messageData, {
-            userId: "asfda",
-            roomId: "239487942",
-            message: message,
-            time: "23:13 PM"
-        }])
 
+        //convert format date to "3:12 PM, 23/11"
+        let today = new Date();
+        let hours = today.getHours();
+        let minutes = today.getMinutes();
+        let ampm = today.getHours() >= 12 ? 'PM' : 'AM';
+
+        if (hours > 12) {
+            hours = hours - 12;
+        }
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        let currentTime = hours + ":" + minutes + " " + ampm + ", " + today.getDate() + '/' + (today.getMonth() + 1)
+        let currentMsg = {
+            userId: localStorage["CurrentUser"],
+            roomId: data._id,
+            message: message,
+            time: currentTime
+        };
+        // setMessageD(currentMsg)
+        // setMessageData((msgs) => [...msgs, data])
+        socket.emit("client-gui-tn", currentMsg)
+        setMessage("");
     }
-    const MessageItem=({message})=>{
-        const [fullName, setFullName]=useState(null);
-        
+    const MessageItem = ({ message }) => {
+        const [fullName, setFullName] = useState(null);
+
         useEffect(() => {
             getMessageInfo()
         }, [])
@@ -74,7 +98,7 @@ const ChatDetails = ({ account }) => {
             axios.get(`${apiUrl}/users/${message.userId}`)
                 .then((data) => {
                     // get name who send this message
-                    if(data["data"].hasValue){
+                    if (data["data"].hasValue) {
                         // console.log(data["data"].user);
                         setFullName(data["data"].user.fullName)
                     }
@@ -83,7 +107,7 @@ const ChatDetails = ({ account }) => {
         return (
             <div class="message">
                 <p class="meta">
-                    {fullName ? fullName : <span style={{color: "red"}}>Me </span>}
+                    {fullName ? fullName : <span style={{ color: "red" }}>Me </span>}
                     <span> {message.time}</span>
                 </p>
                 <p class="text">{message.message}</p>
@@ -97,7 +121,7 @@ const ChatDetails = ({ account }) => {
             <div class="page_content">
                 <div class="chat-header">
                     <Link to="/Chats">
-                        <FaArrowLeft color='white'/>
+                        <FaArrowLeft color='white' />
                     </Link>
                     <div style={{
                         marginRight: 700
@@ -105,23 +129,30 @@ const ChatDetails = ({ account }) => {
                 </div>
                 <div class="chat-messages">
                     {
-                        messageData.map(msg => <MessageItem message={msg}/>)
+                        messageData.map(msg => <MessageItem message={msg} />)
                     }
                 </div>
                 <div class="chat-form-container">
                     <form id="chat-form">
                         <input
-                            id="message"
+                            // id="message"
                             type="text"
                             placeholder="Enter Message"
                             // required
                             class="message"
                             name='message'
-                            onChange={onChangeInput}
-                        // value={message}
-                        // autocomplete="off"
+                            onChange={(event) => {
+                                setMessage(event.target.value);
+                            }}
+                            value={message}
+                            onKeyPress={(event) => {
+                                if (event.key === "Enter") {
+                                    handleSendMessage();
+                                }
+                            }}
+
                         />
-                        <div onClick={() => handleSendMessage()} class="btn"><i class="fas fa-paper-plane"></i> Send</div>
+                        <div onClick={handleSendMessage} class="btn"><i class="fas fa-paper-plane"></i> Send</div>
                     </form>
                 </div>
             </div>

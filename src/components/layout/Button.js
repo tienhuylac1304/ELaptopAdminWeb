@@ -5,7 +5,7 @@ const Button = ({type, href}) => {
     switch (type) {
         case "details":
                 return (
-                        <Link to="{href}" className="btn btn_details">
+                        <Link to={href} className="btn btn_details">
                             <i class='bx bx-show' ></i> 
                             <span className="tooltip">Details</span>  
                         </Link>                     
@@ -13,7 +13,7 @@ const Button = ({type, href}) => {
                 break;
         case "edit":
             return (
-                    <Link to="{href}" className="btn btn_edit">
+                    <Link to={href} className="btn btn_edit">
                         <i class='bx bx-edit'></i>
                         <span className="tooltip">Edit</span>
                     </Link>    
@@ -21,7 +21,7 @@ const Button = ({type, href}) => {
             break;
             case "delete":
                 return (
-                        <Link to="{href}" className="btn btn_delete">
+                        <Link to={href} className="btn btn_delete">
                             <i class='bx bx-trash' ></i>  
                             <span className="tooltip">Remove</span>  
                         </Link>                     
@@ -29,7 +29,7 @@ const Button = ({type, href}) => {
                 break;
                 case "hide":
                 return (
-                        <Link to="{href}" className="btn btn_hide">
+                        <Link to={href} className="btn btn_hide">
                             <i class='bx bx-hide' ></i>   
                             <span className="tooltip">Hide</span>
                         </Link>    
@@ -37,7 +37,7 @@ const Button = ({type, href}) => {
                 break;
                 case "create":
                 return (
-                        <Link to="{href}" className="btn btn_create">
+                        <Link to={href} className="btn btn_create">
                             <i class='bx bx-plus-circle'></i>  
                             <span className="tooltip">Create new</span>
                         </Link>    
@@ -45,7 +45,7 @@ const Button = ({type, href}) => {
                 break;
                 case "copy":
                 return (
-                        <Link to="{href}" className="btn btn_copy">
+                        <Link to={href} className="btn btn_copy">
                             <i class='bx bx-copy' ></i>
                             <span className="tooltip">Copy</span>
                         </Link>    
@@ -53,14 +53,14 @@ const Button = ({type, href}) => {
                 break;
                 case "accept":
                 return (
-                        <Link to="{href}" className="btn btn_accept">
+                        <Link to={href} className="btn btn_accept">
                             <span className="tooltip">Accept</span>
                         </Link>    
                 );
                 break;
         default:
             return(
-                <Link to="{href}" className="btn">
+                <Link to={href} className="btn">
                     <span className="tooltip">Button</span>   
                 </Link>
             );

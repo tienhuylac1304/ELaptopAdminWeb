@@ -8,14 +8,11 @@ import { Link } from "react-router-dom";
 // import { io } from "socket.io-client";
 import React, { useState, useEffect, useRef } from "react";
 import { apiUrl } from '../api'
-import io from "socket.io-client"
 import axios from "axios";
 
-const socket = io.connect(apiUrl);
 const Chat = ({ navigation, account }) => {
     let CurrentUser = localStorage['CurrentUser']
     const [roomData, setRoomData] = useState([])
-
     //useEffect
     useEffect(() => {
         // console.log(localStorage['CurrentUser']);
@@ -30,8 +27,8 @@ const Chat = ({ navigation, account }) => {
     // useEffect(() => {
     //     axios.get(`${apiUrl}/rooms/`)
     // })
-    const RoomItem = ({room}) => {
-        const [lastMessages, setLastMessages]=useState({
+    const RoomItem = ({ room }) => {
+        const [lastMessages, setLastMessages] = useState({
             userId: "",
             message: "",
             time: "",
@@ -45,9 +42,9 @@ const Chat = ({ navigation, account }) => {
             axios.get(`${apiUrl}/rooms/messages/${room._id}`)
                 .then((msg) => {
                     // get last message in room 
-                    let length= msg["data"].length;
-                    console.log(msg["data"][length-1]);
-                    setLastMessages(msg["data"][length-1])
+                    let length = msg["data"].length;
+                    // console.log(msg["data"][length-1]);
+                    setLastMessages(msg["data"][length - 1])
                 })
         }
         return (
@@ -55,7 +52,6 @@ const Chat = ({ navigation, account }) => {
                 <Link className="mess" to={"/ChatDetails"}
                     state={room}
                 >
-
                     <tr className="tb_body">
                         <td rowSpan="3">
                             <img src={`${apiUrl}/images/${room.user1.profilePicture}`} />
@@ -69,7 +65,7 @@ const Chat = ({ navigation, account }) => {
                     </tr>
                     <tr>
                         <td className="chat_content col_2">
-                            {lastMessages.userId==localStorage["CurrentUser"] && (<span>You: </span>)}{lastMessages.message}
+                            {lastMessages.userId == localStorage["CurrentUser"] && (<span>You: </span>)}{lastMessages.message}
                         </td>
                     </tr>
                 </Link>
