@@ -24,9 +24,6 @@ const UnChat = ({ navigation, account }) => {
                 }
             })
     }, [])
-    // useEffect(() => {
-    //     axios.get(`${apiUrl}/rooms/`)
-    // })
     const handleClickAccept = (user1Id) => {
         // console.log(user1Id);
         axios.post(`${apiUrl}/rooms/match`, {user1: user1Id, user2: CurrentUser})
