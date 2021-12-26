@@ -94,7 +94,7 @@ const Dashboard = ({ account }) => {
                                     <td>
                                         <img src={`${apiUrl}/images/${staff.profilePicture}`} />
                                     </td>
-                                    <td>{staff.name}</td>
+                                    <td>{staff.fullName}</td>
                                     <td>{staff.role}</td>
                                     <td>{staff.phone}</td>
                                     <td>
