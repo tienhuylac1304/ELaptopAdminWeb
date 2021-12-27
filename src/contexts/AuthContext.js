@@ -40,9 +40,10 @@ const AuthContextProvider = ({ children }) => {
             // console.log(userForm);
             const response = await axios.post(`${apiUrl}/admins/login`, userForm)
             //save token to local storage
+            // console.log(response.data.user._id);
             if (response.data.success)
                 localStorage.setItem('token', response.data.accessToken)
-                localStorage.setItem('CurrentUser', response.data.user)
+                localStorage.setItem('CurrentUser', response.data.user._id)
 
             await loadUser()
             return response.data
