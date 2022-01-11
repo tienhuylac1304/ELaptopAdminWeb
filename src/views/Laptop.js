@@ -72,7 +72,7 @@ const Laptop = ({ account}) => {
                                 <td>{pro.description.brand}</td>
                                 <td>{pro.price}</td>
                                 <td>
-                                    <Button type="details" href="#"></Button>
+                                    <Button type="details" href="/ProductDetails" state={pro}></Button>
                                     <Button type="edit" href="#"></Button>
                                     <Button type="delete" href="#"></Button>
                                 </td>
