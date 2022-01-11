@@ -10,6 +10,7 @@ import Vouchers from "./views/Voucher";
 import Chat from "./views/Chat";
 import UnChat from "./views/UnChat ";
 import ChatDetails from "./views/ChatDetails";
+import Orders from "./views/Orders";
 // import io from "socket.io-client"
 
 // const socket = io.connect("http://192.168.1.2:3001");
@@ -36,6 +37,7 @@ function App() {
           <Route path="/Chats"  element={<Chat account={admin}/>}/>
           <Route path="/ChatDetails"  element={<ChatDetails account={admin}/>}/>
           <Route path="/UnChat" element={<UnChat account={admin}/>}/>
+          <Route path="/Orders" element={<Orders account={admin}/>}/>
           <Route path="/" element={<Landing/>} />
         </Routes>
       </AuthProvider>

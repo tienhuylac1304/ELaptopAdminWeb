@@ -9,7 +9,7 @@ import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa";
 import io from "socket.io-client"
 
-const socket = io.connect("http://192.168.1.2:3001");
+const socket = io.connect(apiUrl);
 const ChatDetails = ({ account }) => {
     const location = useLocation()
     const data = location.state

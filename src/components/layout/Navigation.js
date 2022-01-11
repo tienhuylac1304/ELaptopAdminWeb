@@ -71,7 +71,7 @@ const Navigation = ({account}) => {
                 </ul>
                 <ul>
                     <li className="list">
-                        <NavLink exact to="#" className="link" activeClassName="active_link">
+                        <NavLink exact to="/Orders" className="link" activeClassName="active_link">
                             <span class="icon">
                                 <i class='bx bx-food-menu'></i>
                             </span>
