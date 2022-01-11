@@ -61,7 +61,7 @@ const Vouchers = ({ account }) => {
                                     <td>{voucher.end}</td>
                                     <td>{voucher.limit}</td>
                                     <td className="btn_ctn">
-                                        <Button type="details" href="#"></Button>
+                                        <Button type="details" href="/VoucherDetails" state={voucher}></Button>
                                         <Button type="edit" href="#"></Button>
                                         <Button type="delete" href="#"></Button>
                                     </td>

@@ -7,7 +7,7 @@ import { Link ,useLocation} from "react-router-dom";
 import { apiUrl } from '../api'
 
 
-const StaffDetails = ({account}) => {
+const CustomerDetails = ({account}) => {
     const location = useLocation()
     const data = location.state
     console.log(data)
@@ -37,19 +37,13 @@ const StaffDetails = ({account}) => {
                             </tr>
                             <tr>
                                 <td className="tb_header">
-                                    Regency
-                                </td>
-                                <td className="tb_body">{data.role}</td>
-                            </tr>
-                            <tr>
-                                <td className="tb_header">
                                     Phone
                                 </td>
                                 <td className="tb_body">{data.phone}
                                 </td>
                             </tr>
                         </table>
-                        <Link to="/Dashboard" className="tb_title">
+                        <Link to="/Customer" className="tb_title">
                             Back to list
                         </Link>
                 </div>
@@ -60,4 +54,4 @@ const StaffDetails = ({account}) => {
     )
 }
 
-export default StaffDetails
+export default CustomerDetails

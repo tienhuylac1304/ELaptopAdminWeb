@@ -7,7 +7,7 @@ import { Link ,useLocation} from "react-router-dom";
 import { apiUrl } from '../api'
 
 
-const StaffDetails = ({account}) => {
+const VoucherDetails = ({account}) => {
     const location = useLocation()
     const data = location.state
     console.log(data)
@@ -20,36 +20,59 @@ const StaffDetails = ({account}) => {
                 <div className="profile">
                     <div className="profile_tb">
                         <div className="prof_img">
-                            <img src={`${apiUrl}/images/${data.profilePicture}`} />
+                            <img src={`${apiUrl}/images/${data.image}`} />
+                            <h2>{data.name}</h2>
                         </div>
                         <table className="tb">
                             <tr>
                                 <td className="tb_header">
-                                    Name
+                                    Description
                                 </td>
-                                <td className="tb_body">{data.fullName}</td>
+                                <td className="tb_body">{data.description}</td>
                             </tr>
                             <tr>
                                 <td className="tb_header">
-                                    Date of birth
+                                    Start
                                 </td>
-                                <td className="tb_body">{data.dateOfBirth}</td>
+                                <td className="tb_body">{data.start}</td>
                             </tr>
                             <tr>
                                 <td className="tb_header">
-                                    Regency
+                                    End
                                 </td>
-                                <td className="tb_body">{data.role}</td>
+                                <td className="tb_body">{data.end}
+                                </td>
                             </tr>
                             <tr>
                                 <td className="tb_header">
-                                    Phone
+                                    Type
                                 </td>
-                                <td className="tb_body">{data.phone}
+                                <td className="tb_body">{data.type}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="tb_header">
+                                    Code
+                                </td>
+                                <td className="tb_body">{data.code}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="tb_header">
+                                    Limit
+                                </td>
+                                <td className="tb_body">{data.limit}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="tb_header">
+                                    Value
+                                </td>
+                                <td className="tb_body">{data.value*100}%
                                 </td>
                             </tr>
                         </table>
-                        <Link to="/Dashboard" className="tb_title">
+                        <Link to="/vouchers" className="tb_title">
                             Back to list
                         </Link>
                 </div>
@@ -60,4 +83,4 @@ const StaffDetails = ({account}) => {
     )
 }
 
-export default StaffDetails
+export default VoucherDetails

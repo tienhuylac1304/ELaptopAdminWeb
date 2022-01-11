@@ -61,7 +61,7 @@ const Customer = ({ account }) => {
                                     <td>{cus.fullName}</td>
                                     <td>{cus.phone}</td>
                                     <td>
-                                        <Button type="details" href="#"></Button>
+                                        <Button type="details" href="/CustomerDetails" state={cus}></Button>
                                     </td>
                                 </tr>
                             ))}

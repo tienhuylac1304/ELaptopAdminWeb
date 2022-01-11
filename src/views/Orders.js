@@ -8,6 +8,32 @@ import { apiUrl } from '../api';
 import React, { useState, useEffect } from 'react'
 
 const Orders = ({ account}) => {
+    // const [statusData, setStatusData] = useState([
+    //     {
+    //         id: 0,
+    //         name: "Waiting Confirm",
+    //     },
+    //     {
+    //         id: 1,
+    //         name: "Preparing",
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Delivering",
+    //     },
+    //     {
+    //         id: 3,
+    //         name: "Completed",
+    //     },
+    //     {
+    //         id: 4,
+    //         name: "Cancelled",
+    //     },
+    //     {
+    //         id: 5,
+    //         name: "Return Refund",
+    //     },
+    // ])
     const [productsData, setProductsData] = useState([])
     // api data 
     //     {
@@ -57,6 +83,7 @@ const Orders = ({ account}) => {
                                 <td>Customer</td>
                                 <td>Payment method</td>
                                 <td>Create time</td>
+                                <td>State</td>
                                 <td></td>
                             </tr>
                             {productsData.map(pro=>(
@@ -65,10 +92,9 @@ const Orders = ({ account}) => {
                                 <td>{pro.DeliveryInfo.name}</td>
                                 <td>{pro.PaymentMethod}</td>
                                 <td>{pro.createdAt}</td>
+                                <td>{pro.Status}</td>
                                 <td>
                                     <Button type="details" href="#"></Button>
-                                    <Button type="edit" href="#"></Button>
-                                    <Button type="delete" href="#"></Button>
                                 </td>
                             </tr>
                             ))}

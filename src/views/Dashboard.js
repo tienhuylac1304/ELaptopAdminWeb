@@ -6,6 +6,7 @@ import Footer from "../components/layout/Footer";
 import React, { useState, useEffect, useRef } from "react";
 import { apiUrl } from '../api'
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Dashboard = ({ account }) => {
     const [staffsData, setStaffsData] = useState([])
@@ -98,7 +99,7 @@ const Dashboard = ({ account }) => {
                                     <td>{staff.role}</td>
                                     <td>{staff.phone}</td>
                                     <td>
-                                        <Button type="details" href="#"></Button>
+                                        <Button type="details" href="/StaffDetails" state={staff}></Button>
                                         <Button type="delete" href="#"></Button>
                                     </td>
                                 </tr>

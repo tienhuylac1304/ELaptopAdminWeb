@@ -152,7 +152,7 @@ const ChatDetails = ({ account }) => {
                             }}
 
                         />
-                        <div onClick={handleSendMessage} class="btn"><i class="fas fa-paper-plane"></i> Send</div>
+                        <div onClick={handleSendMessage} class="btn"><i class='bx bx-mail-send' ></i> Send</div>
                     </form>
                 </div>
             </div>
