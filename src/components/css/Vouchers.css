@@ -42,3 +42,8 @@
     object-fit: cover;
     vertical-align: middle;
 }
+.ctn_btnCre .search .selection{
+    width: 100px;
+    text-align: center;
+    margin-right: 5px;
+}

@@ -38,7 +38,28 @@ const Laptop = ({ account}) => {
             setProductsData(data["data"])
         })
     }, [productsData])
-    
+    const proCate = (category) => {
+        switch (category) {
+            case 1:
+                return "Business"
+                break;
+            case 2:
+                return "Gaming"
+                break;
+            case 3:
+                return "Graphic"
+                break;
+            case 4:
+                return "Student"
+                break;
+            case 5:
+                return "Like new 95%"
+                break;
+            default:
+                return;
+                break;
+        }
+    }
     return (
         <>
             <Header />
@@ -68,7 +89,7 @@ const Laptop = ({ account}) => {
                                     <img src={`${apiUrl}/images/${pro.image[0]}`} />
                                 </td>
                                 <td>{pro.name}</td>
-                                <td>{pro.description.category}</td>
+                                <td>{proCate(pro.description.category)}</td>
                                 <td>{pro.description.brand}</td>
                                 <td>${pro.price}</td>
                                 <td>
