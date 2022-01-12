@@ -94,7 +94,7 @@ const Orders = ({ account}) => {
                                 <td>{pro.createdAt}</td>
                                 <td>{pro.Status}</td>
                                 <td>
-                                    <Button type="details" href="#"></Button>
+                                    <Button type="details" href="/OrderDetails" state={pro}></Button>
                                 </td>
                             </tr>
                             ))}

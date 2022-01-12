@@ -70,7 +70,7 @@ const Laptop = ({ account}) => {
                                 <td>{pro.name}</td>
                                 <td>{pro.description.category}</td>
                                 <td>{pro.description.brand}</td>
-                                <td>{pro.price}</td>
+                                <td>${pro.price}</td>
                                 <td>
                                     <Button type="details" href="/ProductDetails" state={pro}></Button>
                                     <Button type="edit" href="#"></Button>

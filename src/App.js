@@ -15,6 +15,7 @@ import StaffDetails from "./views/StaffDetails";
 import CustomerDetails from "./views/CustomerDetails";
 import VoucherDetails from "./views/VoucherDetails";
 import ProductDetails from "./views/ProductDetails";
+import OrderDetails from "./views/OrderDetails";
 // import io from "socket.io-client"
 
 // const socket = io.connect("http://192.168.1.2:3001");
@@ -46,6 +47,7 @@ function App() {
           <Route path="/CustomerDetails" element={<CustomerDetails account={admin}/>}/>
           <Route path="/VoucherDetails" element={<VoucherDetails account={admin}/>}/>
           <Route path="/ProductDetails" element={<ProductDetails account={admin}/>}/>
+          <Route path="/OrderDetails" element={<OrderDetails account={admin}/>}/>
           <Route path="/" element={<Landing/>} />
         </Routes>
       </AuthProvider>
